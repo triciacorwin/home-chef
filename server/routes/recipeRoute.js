@@ -1,21 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-// const fetch = require('node-fetch');
 const Recipe = require(path.join(__dirname, '../models/recipeModel'));
+const recipeController = require(path.join(__dirname, '../controllers/recipeController'))
 
 // create a recipe
-router.post ("/", async (req, res, next) => {
-  try {
-    const {vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions} = req.body;
-    const newRecipe = await Recipe.create({vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions});
-    res.status(200).json(newRecipe);
-  } catch (err) {
-    next ({
-      log: 'Express error handler caught error in recipeRoute.post',
-      message: {err: err.message}
-    });
-  }
+router.post ("/", recipeController.createRecipe, (req, res) => {
+  res.status(200).json(res.locals.newRecipe);
 })
 
 // get all recipes

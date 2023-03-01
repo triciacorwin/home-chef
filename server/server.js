@@ -6,6 +6,7 @@ mongoose.set('strictQuery', false);
 
 const PORT = 3000;
 const recipeRoute = require(path.join(__dirname, '/routes/recipeRoute'));
+const apiRoute = require(path.join(__dirname, '/routes/apiRoute'));
 
 // Connect to mongoDB database
 // options object is passed in to ensure the latest features and behaviors are used when connecting to the MongoDB database
@@ -26,11 +27,11 @@ app.use ((req, res, next) => {
 })
 
 // Set up routes
-// route to serve requests sent to /
-
+// route to serve requests sent to /api (homepage)
+app.use('/api', apiRoute);
 
 // route to serve requests sent to /user/recipe
-app.use('/user/recipe', recipeRoute);
+app.use('/user/myrecipe', recipeRoute);
 
 // Unknown route handler
 app.use((req, res) => res.sendStatus(404));
