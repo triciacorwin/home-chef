@@ -1,16 +1,20 @@
+const path = require('path');
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
-const app = express();
 const PORT = 3000;
-const recipeRoute = require('./routes/recipeRoute');
+const recipeRoute = require(path.join(__dirname, '/routes/recipeRoute'));
 
 // Connect to mongoDB database
 // options object is passed in to ensure the latest features and behaviors are used when connecting to the MongoDB database
 mongoose.connect('mongodb+srv://triciayeh1203:test123456@cluster0.zoqjbuz.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Connected to DB"))
   .catch((err) => console.log(`Fail to connect to DB, ${err}`))
+
+
+//TODO: serve all static files
 
 // Parse request body
 app.use(express.json());
@@ -22,11 +26,11 @@ app.use ((req, res, next) => {
 })
 
 // Set up routes
+// route to serve requests sent to /
+
 
 // route to serve requests sent to /user/recipe
 app.use('/user/recipe', recipeRoute);
-
-
 
 // Unknown route handler
 app.use((req, res) => res.sendStatus(404));
