@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const path = require('path');
-
+const path = require('path');
+const Recipe = require(path.join(__dirname, '../models/recipeModel'));
 
 // search recipes
 // get all searched recipe
@@ -49,8 +49,17 @@ router.get(("/recipe/:id"), (req, res) => {
 })
 
 // save a recipe // create a recipe in my recipe
-router.post("/recipe/:id", (req, res) => {
-  
+router.post("/recipe/:id", async (req, res, next) => {
+  try {
+    const {vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions} = req.params.id;
+    const newRecipe = await Recipe.create({vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions});
+    res.status(200).json(newRecipe);
+  } catch (err) {
+    next ({
+      log: 'Express error handler caught error in apiRoute.post',
+      message: {err: err.message}
+    });
+  }
 })
 
 

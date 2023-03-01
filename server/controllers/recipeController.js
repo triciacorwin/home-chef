@@ -16,4 +16,4 @@ recipeController.createRecipe = async (req, res, next) => {
 }
 
 
-module.exports = recipeController;
+// module.exports = recipeController;
