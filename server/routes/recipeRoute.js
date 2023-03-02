@@ -8,7 +8,7 @@ const Recipe = require(path.join(__dirname, '../models/recipeModel'));
 router.post ("/", async (req, res, next) => {
   try {
     const {vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions} = req.body;
-    const newRecipe = await Recipe.create({vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions});
+    const newRecipe = await Recipe.create({vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions}).exec();
     res.status(200).json(newRecipe);
   } catch (err) {
     next ({
@@ -18,11 +18,32 @@ router.post ("/", async (req, res, next) => {
   }
 })
 
+// get all recipes
+router.get ("/", async (req, res, next) => {
+  try {
+    const myRecipes = await Recipe.find({}).exec();
+    if (myRecipes.length === 0) {
+      return next(
+        {
+          log: 'No recipe found',
+          message: {err: 'No recipe found'}
+        }
+      )
+    }
+    res.status(200).json(myRecipes);
+  } catch (err) {
+    next ({
+      log: 'Express error handler caught error in recipeRoute.get(a recipe)',
+      message: {err: err.message}
+    });
+  }
+})
+
 
 // get a recipe
 router.get ("/:id", async (req, res, next) => {
   try {
-    const myRecipe = await Recipe.find({_id: req.params.id});
+    const myRecipe = await Recipe.find({_id: req.params.id}).exec();
     if (myRecipe.length === 0) {
       return next(
         {
@@ -44,7 +65,7 @@ router.get ("/:id", async (req, res, next) => {
 // patch a recipe
 router.patch ("/:id", async (req, res, next) => {
   try {
-    const updatedRecipe = await Recipe.findOneAndUpdate({_id: req.params.id}, { $set: req.body }, {returnOriginal: false});
+    const updatedRecipe = await Recipe.findOneAndUpdate({_id: req.params.id}, { $set: req.body }, {returnOriginal: false}).exec();
     if (!updatedRecipe) {
       return next(
         {
@@ -66,7 +87,7 @@ router.patch ("/:id", async (req, res, next) => {
 // delete a recipe
 router.delete ("/:id", async (req, res, next) => {
   try {
-    const deletedRecipe = await Recipe.findOneAndDelete({_id: req.params.id});
+    const deletedRecipe = await Recipe.findOneAndDelete({_id: req.params.id}).exec();
     if (!deletedRecipe) {
       return next(
         {

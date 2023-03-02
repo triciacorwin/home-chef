@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const Recipe = require(path.join(__dirname, '../models/recipeModel'));
+const recipeController = require(path.join(__dirname, '../controllers/recipeController'));
 
 // search recipes
 // get all searched recipe
@@ -27,8 +28,8 @@ router.get(("/recipe"), (req, res) => {
 
 // get recipe detail information
 router.get(("/recipe/:id"), (req, res) => {
-  //const paramValue = req.params.id
-  const testValue = 479101;
+  const paramValue = req.params.id;
+  // const testValue = 479101;
   const options = {
     method: 'GET',
     headers: {
@@ -36,10 +37,9 @@ router.get(("/recipe/:id"), (req, res) => {
       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
   };
-  fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${testValue}/information`, options)
+  fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${paramValue}/information`, options)
     .then(response => response.json())
     .then(response => {
-      console.log(response);
       res.status(200).json(response);
     })
     .catch(err => {
@@ -49,9 +49,10 @@ router.get(("/recipe/:id"), (req, res) => {
 })
 
 // save a recipe // create a recipe in my recipe
-router.post("/recipe/:id", async (req, res, next) => {
+router.post("/recipe/:id", recipeController.getRecipe, async (req, res, next) => {
   try {
-    const {vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions} = req.params.id;
+    // console.log('outside', res.locals.newRecipe);
+    const {vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions} = res.locals.newRecipe;
     const newRecipe = await Recipe.create({vegetarian, vegan, glutenFree, dairyFree, preparationMinutes, cookingMinutes, servings, title, image, analyzedInstructions});
     res.status(200).json(newRecipe);
   } catch (err) {
