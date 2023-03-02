@@ -1,31 +1,54 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import { FaBeer } from 'react-icons/fa';
 // import logo from 'assets/images/logo.jpg';
+import Main from './Main.js';
+
+
+// Parent component
 
 const Header = () => {
+  const [isSearchButtonClicked, setSearchButton] = useState(false);
+
+  // make wrapper function to give child component setSearchButton function
+  const setSearchButtonWrapper = useCallback(val => {
+    setSearchButton(val);
+  }, [setSearchButton])
+
   return (
     <>
       <div>
         <img src='' alt='Home Chef' />
       </div>
       <div>
-        <SearchBar />
+        <SearchBar setSearchButton = {setSearchButtonWrapper}/>
       </div>
       <div>
         <CreateRecipeButton />
-        <MyRecipeButton />
+        <MyRecipeButton setSearchButton = {setSearchButtonWrapper}/>
         <SignupLoginButton />
         <LanguageSelector />
+      </div>
+      <div>
+        <Main isSearchButtonClicked = {isSearchButtonClicked}/>
       </div>
     </>
   )
 }
 
-const SearchBar = () => {
+// Child components
+
+const SearchBar = ( {setSearchButton} ) => {
+  // const [searchTerm, setSearchTerm] = React.useState("");
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   setSearchTerm(event.target.value);
+  // };
 
   return (
     <>
       <form>
-        <input type="text" placeholder="Search recipes..." />
+        <input type="search" name="q" placeholder="Search recipes..." />
+        <input type="submit" value="Search" />
       </form>
     </>
   )
@@ -40,7 +63,7 @@ const CreateRecipeButton = () => {
   )
 }
 
-const MyRecipeButton = () => {
+const MyRecipeButton = ( {setSearchButton} ) => {
   return (
     <button>
       My recipes
