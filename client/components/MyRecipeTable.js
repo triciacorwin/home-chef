@@ -18,12 +18,14 @@ const MyRecipeTable = () => {
     fetchMyRecipes();
   }, []);
 
+
+
   // grab data wanted and then pass it fetche
 
   return (
-    <div className="myRecipe">
+    <div className="recipeList">
       <h2>My Recipes</h2>
-      <div className="myRecipeTable">
+      <div className="recipeTable">
         {myRecipeList && myRecipeList.map((recipe) => (
           <RecipeCard key={recipe._id} recipe = {recipe}/>
         ))}

@@ -1,21 +1,29 @@
 import React from 'react';
 
-const SearchRecipeTable = () => {
+const SearchRecipeTable = ({ result }) => {
   return (
-    <div>
+    <div className="recipeList">
       <h2>What other home chefs created...</h2>
-      <RecipeCard />
+      <div className="recipeTable">
+        {result && result.map((recipe) => (
+          <RecipeCard key= {recipe.id} recipe = {recipe}/>
+        ))}
+      </div>
     </div>
   )
 }
 
-const RecipeCard = () => {
+const RecipeCard = ( {recipe} ) => {
   return (
-    <div>
-      <h3>Example Title</h3>
-      <a href="">See full recipe</a>
-      <img src="" alt=""></img>
-      <button>Save</button>
+    <div className = "recipeCard">
+      <div className = "cardTitle">
+        <h3>{recipe.title}</h3>
+        <a href="">See full recipe</a>
+      </div>
+      <div className = "cardButtons">
+        <img src={recipe.image} alt="recipe image"></img>
+      </div>
+      <button className = "cardButtons">Save</button>
     </div>
   )
 }

@@ -38,11 +38,11 @@ body {
   color:rgba(53, 11, 2, 0.795);
 }
 
-.myRecipe {
+.recipeList {
   font-family: 'Caveat', 'Cabin', sans-serif;
 }
 
-.myRecipeTable {
+.recipeTable {
   margin: 0;
   padding: 1em;
   display: flex;
@@ -70,5 +70,5 @@ body {
 
 
 .recipeCard img {
-  max-width: 18rem;
+  max-width: 20rem;
 }
