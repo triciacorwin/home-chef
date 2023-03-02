@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Header from './Header';
+import Main from './Main';
 
-//TODO: replace class with hook to practice
-
-class App extends Component {
-  
-  render() {
-    return (
-      <div>
-        <h1>Hello world!</h1>
-      </div>
-    )
-  }
-
+const App = () => {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  )
 }
 
 export default App;

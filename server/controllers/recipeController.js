@@ -17,7 +17,6 @@ recipeController.createRecipe = async (req, res, next) => {
 
 recipeController.getRecipe = (req, res, next) => {
     const paramValue = req.params.id;
-    // const testValue = 479101;
     console.log(paramValue);
     const options = {
       method: 'GET',
