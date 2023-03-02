@@ -22,12 +22,16 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "css-loader": "^6.7.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.0",
     "node-fetch": "^3.3.0",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1"
   }
 }

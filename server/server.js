@@ -16,6 +16,7 @@ mongoose.connect('mongodb+srv://triciayeh1203:test123456@cluster0.zoqjbuz.mongod
 
 
 //TODO: serve all static files
+app.use(express.static('assets'));
 
 // Parse request body
 app.use(express.json());

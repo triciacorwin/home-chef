@@ -21,9 +21,9 @@ const MyRecipeTable = () => {
   // grab data wanted and then pass it fetche
 
   return (
-    <div>
+    <div className="myRecipe">
       <h2>My Recipes</h2>
-      <div>
+      <div className="myRecipeTable">
         {myRecipeList && myRecipeList.map((recipe) => (
           <RecipeCard key={recipe._id} recipe = {recipe}/>
         ))}

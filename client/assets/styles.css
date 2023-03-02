@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&family=Merriweather&display=swap');
+
+body {
+  background: rgb(255, 255, 255);
+  color: rgba(22, 12, 7, 0.795);
+}
+
+.navbar {
+  background: #d5a78e;
+  margin: 0;
+  width: 100%;
+  padding: 2em 8em 2em 2em;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Abril Fatface', cursive;
+}
+
+.navbar button {
+  background: #d5a78e;
+  color: black;
+  border: 1px solid #d5a78e;
+  font-family: 'Abril Fatface';
+}
+
+.searchbar {
+  width: 25rem;
+}
+
+.main {
+  margin: 3em 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color:rgba(53, 11, 2, 0.795);
+}
+
+.myRecipe {
+  font-family: 'Caveat', 'Cabin', sans-serif;
+}
+
+.myRecipeTable {
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-width: 1rem;
+  border-style: double;
+}
+
+.recipeCard {
+  border-radius: 2%;
+  padding: 1rem;
+  color: rgba(143, 33, 8, 0.795);
+}
+
+.cardTitle {
+  margin: 0;
+  /* padding: 1em 0em 0em 0em; */
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.recipeCard img {
+  max-width: 18rem;
+}

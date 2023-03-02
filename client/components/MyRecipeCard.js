@@ -2,12 +2,16 @@ import React from 'react';
 
 const RecipeCard = ({ recipe }) => {
   return (
-    <div>
-      <h3>{recipe.title}</h3>
-      <a href="">See full recipe</a>
+    <div className = "recipeCard">
+      <div className = "cardTitle">
+        <h3>{recipe.title}</h3>
+        <a href="">View Recipe</a>
+      </div>
       <img src={recipe.image} alt="recipe image"></img>
-      <button>Edit</button>
-      <button>Delete</button>
+      <div className = "cardButtons">
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
     </div>
   )
 }

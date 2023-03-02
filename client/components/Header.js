@@ -16,19 +16,21 @@ const Header = () => {
 
   return (
     <>
-      <div>
-        <img src='' alt='Home Chef' />
+      <div className="navbar">
+        <div className="logo">
+          <img src='../assets/images/logo.jpg' alt='Home Chef' />
+        </div>
+        <div className="search">
+          <SearchBar setSearchButton = {setSearchButtonWrapper}/>
+        </div>
+        <div className="buttons">
+          <CreateRecipeButton />
+          <MyRecipeButton setSearchButton = {setSearchButtonWrapper}/>
+          <SignupLoginButton />
+          <LanguageSelector />
+        </div>
       </div>
-      <div>
-        <SearchBar setSearchButton = {setSearchButtonWrapper}/>
-      </div>
-      <div>
-        <CreateRecipeButton />
-        <MyRecipeButton setSearchButton = {setSearchButtonWrapper}/>
-        <SignupLoginButton />
-        <LanguageSelector />
-      </div>
-      <div>
+      <div className="main">
         <Main isSearchButtonClicked = {isSearchButtonClicked}/>
       </div>
     </>
@@ -47,7 +49,7 @@ const SearchBar = ( {setSearchButton} ) => {
   return (
     <>
       <form>
-        <input type="search" name="q" placeholder="Search recipes..." />
+        <input className="searchbar" type="search" name="q" placeholder="Search recipes..." />
         <input type="submit" value="Search" />
       </form>
     </>
