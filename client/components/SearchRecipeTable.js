@@ -3,7 +3,7 @@ import React from 'react';
 const SearchRecipeTable = () => {
   return (
     <div>
-      <h2>Search Result</h2>
+      <h2>What other home chefs created...</h2>
       <RecipeCard />
     </div>
   )
