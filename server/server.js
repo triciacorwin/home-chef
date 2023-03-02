@@ -27,11 +27,13 @@ app.use ((req, res, next) => {
 })
 
 // Set up routes
+
+// route to serve requests sent to /user/recipe
+app.use('/api/user/myrecipe', recipeRoute);
+
 // route to serve requests sent to /api (homepage)
 app.use('/api', apiRoute);
 
-// route to serve requests sent to /user/recipe
-app.use('/user/myrecipe', recipeRoute);
 
 // Unknown route handler
 app.use((req, res) => res.sendStatus(404));
