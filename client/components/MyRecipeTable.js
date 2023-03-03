@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import RecipeCard from './MyRecipeCard'
 
-const MyRecipeTable = () => {
+const MyRecipeTable = ( {sourceLang, targetLang, setSourceLang, setTargetLang, notSelectedLang} ) => {
   // add a property to state and a function to manipulate the state //set initial value to state property
   const [myRecipeList, setMyRecipeList] = useState(null); 
 

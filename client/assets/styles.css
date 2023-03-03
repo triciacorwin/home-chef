@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&family=Hanken+Grotesk:wght@200&family=Merriweather&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cabin&family=Caveat&family=Hanken+Grotesk:wght@200&family=Merriweather&display=swap');
 
 body {
   background: rgb(255, 255, 255);
@@ -17,13 +19,30 @@ body {
   align-items: center;
   justify-content: space-around;
   font-family: 'Abril Fatface', cursive;
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
 }
+
+
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  cursor: pointer;
+}
+
+button:hover {  
+  background-color: #555555;
+  color: white;
+}
+
 
 .navbar button {
   background: #d5a78e;
   color: black;
   border: 1px solid #d5a78e;
-  font-family: 'Abril Fatface';
+  font-family: 'Hanken Grotesk', sans-serif;
 }
 
 .searchbar {
@@ -31,7 +50,7 @@ body {
 }
 
 .main {
-  margin: 3em 0;
+  margin: 10em 0;
   display: flex;
   justify-content: center;
   text-align: center;

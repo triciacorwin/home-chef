@@ -11,12 +11,15 @@ const Header = () => {
   // Search query and return search result
   const [query, setQuery] = useState("");
   const [result, setResult] = useState([]);
+  const [sourceLang, setSourceLang] = useState("EN");
+  const [targetLang, setTargetLang] = useState("JP");
+  const [notSelectedLang, setNotSelectedLang] = useState("EN");
 
   return (
     <>
       <div className="navbar">
         <div className="logo">
-          <img src='../assets/images/logo.jpg' alt='Home Chef' />
+          <h2>Home Chef</h2>
         </div>
         <div className="search">
           <SearchBar isSearchButtonClicked = {isSearchButtonClicked} setSearchButton = {setSearchButton} query = {query} setQuery = {setQuery} setResult = {setResult}/>
@@ -25,11 +28,11 @@ const Header = () => {
           <CreateRecipeButton />
           <MyRecipeButton isSearchButtonClicked = {isSearchButtonClicked} setSearchButton = {setSearchButton}/>
           <SignupLoginButton />
-          <LanguageSelector />
+          <LanguageSelector notSelectedLang = {notSelectedLang} setNotSelectedLang = {setNotSelectedLang} />
         </div>
       </div>
       <div className="main">
-        <Main isSearchButtonClicked = {isSearchButtonClicked} result = {result}/>
+        <Main isSearchButtonClicked = {isSearchButtonClicked} result = {result} sourceLang = {sourceLang} targetLang = {targetLang} setSourceLang = {setSourceLang} setTargetLang = {setTargetLang} notSelectedLang = {notSelectedLang}/>
       </div>
     </>
   )
@@ -76,7 +79,6 @@ const SearchBar = ( {isSearchButtonClicked, setSearchButton, query, setQuery, se
     }
   }
 
-  // console.log('test', result);
 
   return (
     <>
@@ -121,11 +123,20 @@ const SignupLoginButton = () => {
   )
 }
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ notSelectedLang, setNotSelectedLang }) => {
+  // set state for source language
+  // set state for target language
+  // if user clicks on select language and it's different from target language
+  // pass the prop down to Main -> MyRecipeTable 
+
+  const handleDropdownChange = (event) => {
+    setNotSelectedLang(event.target.value);
+  }
+
   return (
-    <select name="language" id="language">
-      <option value="English">English</option>
-      <option value="Japanese">日本語</option>
+    <select value={notSelectedLang} onChange={handleDropdownChange} name="language" id="language">
+      <option value="EN">English</option>
+      <option value="JA">日本語</option>
     </select>
   )
 }
