@@ -27,7 +27,7 @@ const MyRecipeTable = () => {
       <h2>My Recipes</h2>
       <div className="recipeTable">
         {myRecipeList && myRecipeList.map((recipe) => (
-          <RecipeCard key={recipe._id} recipe = {recipe}/>
+          <RecipeCard setMyRecipeList={setMyRecipeList} key={recipe._id} recipe = {recipe}/>
         ))}
       </div>
     </div>
